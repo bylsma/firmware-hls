@@ -152,6 +152,14 @@ topFile.write(
     "////////////////////////////////////////////////////////////////////////////////\n"
 )
 
+nASMemInnerStr = "\nuint8_t NASMemInner(const TF::seed Seed, const TC::itc iTC) {\n"
+nASMemOuterStr = "\nuint8_t NASMemOuter(const TF::seed Seed, const TC::itc iTC) {\n"
+nSPMemStr = "\nuint8_t NSPMem(const TF::seed Seed, const TC::itc iTC) {\n"
+asInnerMaskStr = "\nuint32_t ASInnerMask(const TF::seed Seed, const TC::itc iTC) {\n"
+asOuterMaskStr = "\nuint32_t ASOuterMask(const TF::seed Seed, const TC::itc iTC) {\n"
+tprojMaskBarrelStr = "\nuint32_t TPROJMaskBarrel(const TF::seed Seed, const TC::itc iTC) {\n"
+tprojMaskDiskStr = "\nuint32_t TPROJMaskDisk(const TF::seed Seed, const TC::itc iTC) {\n"
+elseStr = ""
 # Calculate parameters and print out parameters and top function for each TC.
 for tcName in sorted(asInnerMems.keys()):
     seed = re.sub(r"TC_(....).", r"\1", tcName)
@@ -200,32 +208,34 @@ for tcName in sorted(asInnerMems.keys()):
             tprojMaskDisk = tprojMaskDisk | (1 << projoutIndex)
 
     # Print out parameters for this TC.
-    parametersFile.write(
-        ("\n"
-        "// magic numbers for " + tcName + "\n"
-        "template<> constexpr uint8_t NASMemInner<TF::" + seed + ", TC::" + iTC + ">() {\n"
-        "  return " + str(nASMemInner) + ";\n"
-        "}\n"
-        "template<> constexpr uint8_t NASMemOuter<TF::" + seed + ", TC::" + iTC + ">() {\n"
-        "  return " + str(nASMemOuter) + ";\n"
-        "}\n"
-        "template<> constexpr uint8_t NSPMem<TF::" + seed + ", TC::" + iTC + ">() {\n"
-        "  return " + str(nSPMem) + ";\n"
-        "}\n"
-        "template<> constexpr uint32_t ASInnerMask<TF::" + seed + ", TC::" + iTC + ">() {\n"
-        "  return 0x%X;\n"
-        "}\n"
-        "template<> constexpr uint32_t ASOuterMask<TF::" + seed + ", TC::" + iTC + ">() {\n"
-        "  return 0x%X;\n"
-        "}\n"
-        "template<> constexpr uint32_t TPROJMaskBarrel<TF::" + seed + ", TC::" + iTC + ">() {\n"
-        "  return 0x%X;\n"
-        "}\n"
-        "template<> constexpr uint32_t TPROJMaskDisk<TF::" + seed + ", TC::" + iTC + ">() {\n"
-        "  return 0x%X;\n"
-        "}\n")
-        % (asInnerMask, asOuterMask, tprojMaskBarrel, tprojMaskDisk)
-    )
+    nASMemInnerStr += (
+        "  %sif (Seed == TF::" + seed + " && iTC == TC::" + iTC + ")\n"
+        "    return " + str(nASMemInner) + ";\n"
+    ) % elseStr
+    nASMemOuterStr += (
+       "  %sif (Seed == TF::" + seed + " && iTC == TC::" + iTC + ")\n"
+       "    return " + str(nASMemOuter) + ";\n"
+    ) % elseStr
+    nSPMemStr += (
+       "  %sif (Seed == TF::" + seed + " && iTC == TC::" + iTC + ")\n"
+       "    return " + str(nSPMem) + ";\n"
+    ) % elseStr
+    asInnerMaskStr += (
+       "  %sif (Seed == TF::" + seed + " && iTC == TC::" + iTC + ")\n"
+       "    return 0x%X;\n"
+    ) % (elseStr, asInnerMask)
+    asOuterMaskStr += (
+       "  %sif (Seed == TF::" + seed + " && iTC == TC::" + iTC + ")\n"
+       "    return 0x%X;\n"
+    ) % (elseStr, asOuterMask)
+    tprojMaskBarrelStr += (
+       "  %sif (Seed == TF::" + seed + " && iTC == TC::" + iTC + ")\n"
+       "    return 0x%X;\n"
+    ) % (elseStr, tprojMaskBarrel)
+    tprojMaskDiskStr += (
+       "  %sif (Seed == TF::" + seed + " && iTC == TC::" + iTC + ")\n"
+       "    return 0x%X;\n"
+    ) % (elseStr, tprojMaskDisk)
 
     # Print out prototype for top function for this TC.
     topHeaderFile.write(
@@ -248,9 +258,9 @@ for tcName in sorted(asInnerMems.keys()):
         "\n"
         "void TrackletCalculator_" + seed + iTC + "(\n"
         "    const BXType bx,\n"
-        "    const AllStubMemory<InnerRegion<TF::" + seed + ">()> innerStubs[NASMemInner<TF::" + seed + ", TC::" + iTC + ">()],\n"
-        "    const AllStubMemory<OuterRegion<TF::" + seed + ">()> outerStubs[NASMemOuter<TF::" + seed + ", TC::" + iTC + ">()],\n"
-        "    const StubPairMemory stubPairs[NSPMem<TF::" + seed + ", TC::" + iTC + ">()],\n"
+        "    const AllStubMemory<InnerRegion<TF::" + seed + ">()> innerStubs[" + str(nASMemInner) + "],\n"
+        "    const AllStubMemory<OuterRegion<TF::" + seed + ">()> outerStubs[" + str(nASMemOuter) + "],\n"
+        "    const StubPairMemory stubPairs[" + str(nSPMem) + "],\n"
         "    BXType& bx_o,\n"
         "    TrackletParameterMemory * trackletParameters,\n"
         "    TrackletProjectionMemory<BARRELPS> projout_barrel_ps[TC::N_PROJOUT_BARRELPS],\n"
@@ -283,11 +293,10 @@ for tcName in sorted(asInnerMems.keys()):
         "#pragma HLS array_partition variable=projout_barrel_2s complete dim=1\n"
         "#pragma HLS array_partition variable=projout_disk complete dim=1\n"
         "\n"
-        "TC_" + seed + iTC + ": TrackletCalculator<\n"
-        "  TF::" + seed + ",\n"
-        "  TC::" + iTC + ",\n"
-        "  NSPMem<TF::" + seed + ", TC::" + iTC + ">()\n"
-        " >(\n"
+        "TC_" + seed + iTC + ": TrackletCalculator<InnerRegion<TF::" + seed + ">(), OuterRegion<TF::" + seed + ">()>(\n"
+        "    TF::" + seed + ",\n"
+        "    TC::" + iTC + ", \n"
+        "    " + str(nSPMem) + ",\n"
         "    bx,\n"
         "    innerStubs,\n"
         "    outerStubs,\n"
@@ -301,8 +310,25 @@ for tcName in sorted(asInnerMems.keys()):
         "}\n"
     )
 
+    elseStr = "else "
+
+nASMemInnerStr += "  return 0;\n}\n"
+nASMemOuterStr += "  return 0;\n}\n"
+nSPMemStr += "  return 0;\n}\n"
+asInnerMaskStr += "  return 0;\n}\n"
+asOuterMaskStr += "  return 0;\n}\n"
+tprojMaskBarrelStr += "  return 0;\n}\n"
+tprojMaskDiskStr += "  return 0;\n}\n"
+
 # Print out endifs and close files.
 parametersFile.write(
+    nASMemInnerStr +
+    nASMemOuterStr +
+    nSPMemStr +
+    asInnerMaskStr +
+    asOuterMaskStr +
+    tprojMaskBarrelStr +
+    tprojMaskDiskStr +
     "\n"
     "#endif\n"
 )
