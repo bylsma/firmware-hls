@@ -191,7 +191,7 @@ uint32_t TPROJMaskBarrel(const TF::seed Seed, const TC::itc iTC);
 uint32_t TPROJMaskDisk(const TF::seed Seed, const TC::itc iTC);
 
 template<regionType InnerRegion, regionType OuterRegion> void
-TrackletCalculator(
+TrackletCalculator_(
     const TF::seed Seed,
     const TC::itc iTC,
     const uint8_t NSPMem,
@@ -199,6 +199,57 @@ TrackletCalculator(
     const BXType bx,
     const AllStubMemory<InnerRegion> innerStubs[],
     const AllStubMemory<OuterRegion> outerStubs[],
+    const StubPairMemory stubPairs[],
+    BXType& bx_o,
+    TrackletParameterMemory * const trackletParameters,
+    TrackletProjectionMemory<BARRELPS> projout_barrel_ps[],
+    TrackletProjectionMemory<BARREL2S> projout_barrel_2s[],
+    TrackletProjectionMemory<DISK> projout_disk[]
+);
+
+void
+TrackletCalculator(
+    const TF::seed Seed,
+    const TC::itc iTC,
+    const uint8_t NSPMem,
+
+    const BXType bx,
+    const AllStubMemory<BARRELPS> innerStubs[],
+    const AllStubMemory<BARRELPS> outerStubs[],
+    const StubPairMemory stubPairs[],
+    BXType& bx_o,
+    TrackletParameterMemory * const trackletParameters,
+    TrackletProjectionMemory<BARRELPS> projout_barrel_ps[],
+    TrackletProjectionMemory<BARREL2S> projout_barrel_2s[],
+    TrackletProjectionMemory<DISK> projout_disk[]
+);
+
+void
+TrackletCalculator(
+    const TF::seed Seed,
+    const TC::itc iTC,
+    const uint8_t NSPMem,
+
+    const BXType bx,
+    const AllStubMemory<BARRELPS> innerStubs[],
+    const AllStubMemory<BARREL2S> outerStubs[],
+    const StubPairMemory stubPairs[],
+    BXType& bx_o,
+    TrackletParameterMemory * const trackletParameters,
+    TrackletProjectionMemory<BARRELPS> projout_barrel_ps[],
+    TrackletProjectionMemory<BARREL2S> projout_barrel_2s[],
+    TrackletProjectionMemory<DISK> projout_disk[]
+);
+
+void
+TrackletCalculator(
+    const TF::seed Seed,
+    const TC::itc iTC,
+    const uint8_t NSPMem,
+
+    const BXType bx,
+    const AllStubMemory<BARREL2S> innerStubs[],
+    const AllStubMemory<BARREL2S> outerStubs[],
     const StubPairMemory stubPairs[],
     BXType& bx_o,
     TrackletParameterMemory * const trackletParameters,
@@ -501,7 +552,7 @@ TC::processStubPair(
 
 // This is the primary interface for the TrackletCalculator.
 template<regionType InnerRegion, regionType OuterRegion> void
-TrackletCalculator(
+TrackletCalculator_(
     const TF::seed Seed,
     const TC::itc iTC,
     const uint8_t NSPMem,

@@ -46,7 +46,7 @@ void TrackletCalculator_L1L2A(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L1L2A: TrackletCalculator<InnerRegion<TF::L1L2>(), OuterRegion<TF::L1L2>()>(
+TC_L1L2A: TrackletCalculator(
     TF::L1L2,
     TC::A, 
     13,
@@ -98,7 +98,7 @@ void TrackletCalculator_L1L2B(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L1L2B: TrackletCalculator<InnerRegion<TF::L1L2>(), OuterRegion<TF::L1L2>()>(
+TC_L1L2B: TrackletCalculator(
     TF::L1L2,
     TC::B, 
     13,
@@ -151,7 +151,7 @@ void TrackletCalculator_L1L2C(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L1L2C: TrackletCalculator<InnerRegion<TF::L1L2>(), OuterRegion<TF::L1L2>()>(
+TC_L1L2C: TrackletCalculator(
     TF::L1L2,
     TC::C, 
     13,
@@ -203,7 +203,7 @@ void TrackletCalculator_L1L2D(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L1L2D: TrackletCalculator<InnerRegion<TF::L1L2>(), OuterRegion<TF::L1L2>()>(
+TC_L1L2D: TrackletCalculator(
     TF::L1L2,
     TC::D, 
     13,
@@ -255,7 +255,7 @@ void TrackletCalculator_L1L2E(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L1L2E: TrackletCalculator<InnerRegion<TF::L1L2>(), OuterRegion<TF::L1L2>()>(
+TC_L1L2E: TrackletCalculator(
     TF::L1L2,
     TC::E, 
     13,
@@ -306,7 +306,7 @@ void TrackletCalculator_L1L2F(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L1L2F: TrackletCalculator<InnerRegion<TF::L1L2>(), OuterRegion<TF::L1L2>()>(
+TC_L1L2F: TrackletCalculator(
     TF::L1L2,
     TC::F, 
     13,
@@ -358,7 +358,7 @@ void TrackletCalculator_L1L2G(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L1L2G: TrackletCalculator<InnerRegion<TF::L1L2>(), OuterRegion<TF::L1L2>()>(
+TC_L1L2G: TrackletCalculator(
     TF::L1L2,
     TC::G, 
     13,
@@ -410,7 +410,7 @@ void TrackletCalculator_L1L2H(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L1L2H: TrackletCalculator<InnerRegion<TF::L1L2>(), OuterRegion<TF::L1L2>()>(
+TC_L1L2H: TrackletCalculator(
     TF::L1L2,
     TC::H, 
     13,
@@ -462,7 +462,7 @@ void TrackletCalculator_L1L2I(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L1L2I: TrackletCalculator<InnerRegion<TF::L1L2>(), OuterRegion<TF::L1L2>()>(
+TC_L1L2I: TrackletCalculator(
     TF::L1L2,
     TC::I, 
     13,
@@ -515,7 +515,7 @@ void TrackletCalculator_L1L2J(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L1L2J: TrackletCalculator<InnerRegion<TF::L1L2>(), OuterRegion<TF::L1L2>()>(
+TC_L1L2J: TrackletCalculator(
     TF::L1L2,
     TC::J, 
     13,
@@ -567,7 +567,7 @@ void TrackletCalculator_L1L2K(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L1L2K: TrackletCalculator<InnerRegion<TF::L1L2>(), OuterRegion<TF::L1L2>()>(
+TC_L1L2K: TrackletCalculator(
     TF::L1L2,
     TC::K, 
     12,
@@ -617,7 +617,7 @@ void TrackletCalculator_L1L2L(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L1L2L: TrackletCalculator<InnerRegion<TF::L1L2>(), OuterRegion<TF::L1L2>()>(
+TC_L1L2L: TrackletCalculator(
     TF::L1L2,
     TC::L, 
     12,
@@ -667,7 +667,7 @@ void TrackletCalculator_L3L4A(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L3L4A: TrackletCalculator<InnerRegion<TF::L3L4>(), OuterRegion<TF::L3L4>()>(
+TC_L3L4A: TrackletCalculator(
     TF::L3L4,
     TC::A, 
     12,
@@ -730,7 +730,7 @@ void TrackletCalculator_L3L4B(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L3L4B: TrackletCalculator<InnerRegion<TF::L3L4>(), OuterRegion<TF::L3L4>()>(
+TC_L3L4B: TrackletCalculator(
     TF::L3L4,
     TC::B, 
     12,
@@ -780,7 +780,7 @@ void TrackletCalculator_L3L4C(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L3L4C: TrackletCalculator<InnerRegion<TF::L3L4>(), OuterRegion<TF::L3L4>()>(
+TC_L3L4C: TrackletCalculator(
     TF::L3L4,
     TC::C, 
     12,
@@ -843,7 +843,7 @@ void TrackletCalculator_L3L4D(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L3L4D: TrackletCalculator<InnerRegion<TF::L3L4>(), OuterRegion<TF::L3L4>()>(
+TC_L3L4D: TrackletCalculator(
     TF::L3L4,
     TC::D, 
     12,
@@ -892,7 +892,7 @@ void TrackletCalculator_L3L4E(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L3L4E: TrackletCalculator<InnerRegion<TF::L3L4>(), OuterRegion<TF::L3L4>()>(
+TC_L3L4E: TrackletCalculator(
     TF::L3L4,
     TC::E, 
     11,
@@ -942,7 +942,7 @@ void TrackletCalculator_L3L4F(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L3L4F: TrackletCalculator<InnerRegion<TF::L3L4>(), OuterRegion<TF::L3L4>()>(
+TC_L3L4F: TrackletCalculator(
     TF::L3L4,
     TC::F, 
     11,
@@ -992,7 +992,7 @@ void TrackletCalculator_L3L4G(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L3L4G: TrackletCalculator<InnerRegion<TF::L3L4>(), OuterRegion<TF::L3L4>()>(
+TC_L3L4G: TrackletCalculator(
     TF::L3L4,
     TC::G, 
     11,
@@ -1041,7 +1041,7 @@ void TrackletCalculator_L3L4H(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L3L4H: TrackletCalculator<InnerRegion<TF::L3L4>(), OuterRegion<TF::L3L4>()>(
+TC_L3L4H: TrackletCalculator(
     TF::L3L4,
     TC::H, 
     11,
@@ -1111,7 +1111,7 @@ void TrackletCalculator_L5L6A(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L5L6A: TrackletCalculator<InnerRegion<TF::L5L6>(), OuterRegion<TF::L5L6>()>(
+TC_L5L6A: TrackletCalculator(
     TF::L5L6,
     TC::A, 
     30,
@@ -1181,7 +1181,7 @@ void TrackletCalculator_L5L6D(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
-TC_L5L6D: TrackletCalculator<InnerRegion<TF::L5L6>(), OuterRegion<TF::L5L6>()>(
+TC_L5L6D: TrackletCalculator(
     TF::L5L6,
     TC::D, 
     30,
