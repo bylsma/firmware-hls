@@ -46,10 +46,19 @@ void TrackletCalculator_L1L2A(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L1L2_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L1L2_invt.tab"
+  };
+
 TC_L1L2A: TrackletCalculator(
     TF::L1L2,
     TC::A, 
     13,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -98,10 +107,19 @@ void TrackletCalculator_L1L2B(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L1L2_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L1L2_invt.tab"
+  };
+
 TC_L1L2B: TrackletCalculator(
     TF::L1L2,
     TC::B, 
     13,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -151,10 +169,19 @@ void TrackletCalculator_L1L2C(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L1L2_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L1L2_invt.tab"
+  };
+
 TC_L1L2C: TrackletCalculator(
     TF::L1L2,
     TC::C, 
     13,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -203,10 +230,19 @@ void TrackletCalculator_L1L2D(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L1L2_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L1L2_invt.tab"
+  };
+
 TC_L1L2D: TrackletCalculator(
     TF::L1L2,
     TC::D, 
     13,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -255,10 +291,19 @@ void TrackletCalculator_L1L2E(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L1L2_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L1L2_invt.tab"
+  };
+
 TC_L1L2E: TrackletCalculator(
     TF::L1L2,
     TC::E, 
     13,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -306,10 +351,19 @@ void TrackletCalculator_L1L2F(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L1L2_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L1L2_invt.tab"
+  };
+
 TC_L1L2F: TrackletCalculator(
     TF::L1L2,
     TC::F, 
     13,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -358,10 +412,19 @@ void TrackletCalculator_L1L2G(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L1L2_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L1L2_invt.tab"
+  };
+
 TC_L1L2G: TrackletCalculator(
     TF::L1L2,
     TC::G, 
     13,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -410,10 +473,19 @@ void TrackletCalculator_L1L2H(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L1L2_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L1L2_invt.tab"
+  };
+
 TC_L1L2H: TrackletCalculator(
     TF::L1L2,
     TC::H, 
     13,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -462,10 +534,19 @@ void TrackletCalculator_L1L2I(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L1L2_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L1L2_invt.tab"
+  };
+
 TC_L1L2I: TrackletCalculator(
     TF::L1L2,
     TC::I, 
     13,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -515,10 +596,19 @@ void TrackletCalculator_L1L2J(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L1L2_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L1L2_invt.tab"
+  };
+
 TC_L1L2J: TrackletCalculator(
     TF::L1L2,
     TC::J, 
     13,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -567,10 +657,19 @@ void TrackletCalculator_L1L2K(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L1L2_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L1L2_invt.tab"
+  };
+
 TC_L1L2K: TrackletCalculator(
     TF::L1L2,
     TC::K, 
     12,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -617,10 +716,19 @@ void TrackletCalculator_L1L2L(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L1L2_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L1L2_invt.tab"
+  };
+
 TC_L1L2L: TrackletCalculator(
     TF::L1L2,
     TC::L, 
     12,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -667,10 +775,19 @@ void TrackletCalculator_L3L4A(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L3L4_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L3L4_invt.tab"
+  };
+
 TC_L3L4A: TrackletCalculator(
     TF::L3L4,
     TC::A, 
     12,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -730,10 +847,19 @@ void TrackletCalculator_L3L4B(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L3L4_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L3L4_invt.tab"
+  };
+
 TC_L3L4B: TrackletCalculator(
     TF::L3L4,
     TC::B, 
     12,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -780,10 +906,19 @@ void TrackletCalculator_L3L4C(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L3L4_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L3L4_invt.tab"
+  };
+
 TC_L3L4C: TrackletCalculator(
     TF::L3L4,
     TC::C, 
     12,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -843,10 +978,19 @@ void TrackletCalculator_L3L4D(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L3L4_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L3L4_invt.tab"
+  };
+
 TC_L3L4D: TrackletCalculator(
     TF::L3L4,
     TC::D, 
     12,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -892,10 +1036,19 @@ void TrackletCalculator_L3L4E(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L3L4_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L3L4_invt.tab"
+  };
+
 TC_L3L4E: TrackletCalculator(
     TF::L3L4,
     TC::E, 
     11,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -942,10 +1095,19 @@ void TrackletCalculator_L3L4F(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L3L4_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L3L4_invt.tab"
+  };
+
 TC_L3L4F: TrackletCalculator(
     TF::L3L4,
     TC::F, 
     11,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -992,10 +1154,19 @@ void TrackletCalculator_L3L4G(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L3L4_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L3L4_invt.tab"
+  };
+
 TC_L3L4G: TrackletCalculator(
     TF::L3L4,
     TC::G, 
     11,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -1041,10 +1212,19 @@ void TrackletCalculator_L3L4H(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L3L4_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L3L4_invt.tab"
+  };
+
 TC_L3L4H: TrackletCalculator(
     TF::L3L4,
     TC::H, 
     11,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -1111,10 +1291,19 @@ void TrackletCalculator_L5L6A(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L5L6_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L5L6_invt.tab"
+  };
+
 TC_L5L6A: TrackletCalculator(
     TF::L5L6,
     TC::A, 
     30,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
@@ -1181,10 +1370,19 @@ void TrackletCalculator_L5L6D(
 #pragma HLS array_partition variable=projout_barrel_2s complete dim=1
 #pragma HLS array_partition variable=projout_disk complete dim=1
 
+  static const ap_int<18> LUT_drinv[] = {
+#include "../emData/TC/tables/TC_L5L6_drinv.tab"
+  };
+  static const ap_int<18> LUT_invt[] = {
+#include "../emData/TC/tables/TC_L5L6_invt.tab"
+  };
+
 TC_L5L6D: TrackletCalculator(
     TF::L5L6,
     TC::D, 
     30,
+    LUT_drinv,
+    LUT_invt,
     bx,
     innerStubs,
     outerStubs,
