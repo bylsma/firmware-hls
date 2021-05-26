@@ -318,9 +318,9 @@ TC_L1L2E: TrackletCalculator(
 
 void TrackletCalculator_L1L2F(
     const BXType bx,
-    const AllStubMemory<InnerRegion<TF::L1L2>()> innerStubs[2],
+    const AllStubMemory<InnerRegion<TF::L1L2>()> innerStubs[1],
     const AllStubMemory<OuterRegion<TF::L1L2>()> outerStubs[2],
-    const StubPairMemory stubPairs[13],
+    const StubPairMemory stubPairs[12],
     BXType& bx_o,
     TrackletParameterMemory * trackletParameters,
     TrackletProjectionMemory<BARRELPS> projout_barrel_ps[TC::N_PROJOUT_BARRELPS],
@@ -361,7 +361,7 @@ void TrackletCalculator_L1L2F(
 TC_L1L2F: TrackletCalculator(
     TF::L1L2,
     TC::F, 
-    13,
+    12,
     LUT_drinv,
     LUT_invt,
     bx,
@@ -561,7 +561,7 @@ TC_L1L2I: TrackletCalculator(
 
 void TrackletCalculator_L1L2J(
     const BXType bx,
-    const AllStubMemory<InnerRegion<TF::L1L2>()> innerStubs[1],
+    const AllStubMemory<InnerRegion<TF::L1L2>()> innerStubs[2],
     const AllStubMemory<OuterRegion<TF::L1L2>()> outerStubs[2],
     const StubPairMemory stubPairs[13],
     BXType& bx_o,
@@ -625,7 +625,7 @@ void TrackletCalculator_L1L2K(
     const BXType bx,
     const AllStubMemory<InnerRegion<TF::L1L2>()> innerStubs[2],
     const AllStubMemory<OuterRegion<TF::L1L2>()> outerStubs[1],
-    const StubPairMemory stubPairs[12],
+    const StubPairMemory stubPairs[13],
     BXType& bx_o,
     TrackletParameterMemory * trackletParameters,
     TrackletProjectionMemory<BARRELPS> projout_barrel_ps[TC::N_PROJOUT_BARRELPS],
@@ -667,7 +667,7 @@ void TrackletCalculator_L1L2K(
 TC_L1L2K: TrackletCalculator(
     TF::L1L2,
     TC::K, 
-    12,
+    13,
     LUT_drinv,
     LUT_invt,
     bx,
@@ -743,68 +743,9 @@ TC_L1L2L: TrackletCalculator(
 
 void TrackletCalculator_L3L4A(
     const BXType bx,
-    const AllStubMemory<InnerRegion<TF::L3L4>()> innerStubs[1],
-    const AllStubMemory<OuterRegion<TF::L3L4>()> outerStubs[1],
-    const StubPairMemory stubPairs[12],
-    BXType& bx_o,
-    TrackletParameterMemory * trackletParameters,
-    TrackletProjectionMemory<BARRELPS> projout_barrel_ps[TC::N_PROJOUT_BARRELPS],
-    TrackletProjectionMemory<BARREL2S> projout_barrel_2s[TC::N_PROJOUT_BARREL2S],
-    TrackletProjectionMemory<DISK> projout_disk[TC::N_PROJOUT_DISK]
-) {
-#pragma HLS inline recursive
-#pragma HLS array_partition variable=innerStubs complete dim=1
-#pragma HLS array_partition variable=outerStubs complete dim=1
-#pragma HLS array_partition variable=stubPairs complete dim=1
-#pragma HLS resource variable=innerStubs.get_mem() latency=2
-#pragma HLS resource variable=outerStubs.get_mem() latency=2
-#pragma HLS resource variable=stubPairs[0].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[1].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[2].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[3].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[4].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[5].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[6].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[7].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[8].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[9].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[10].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[11].get_mem() latency=2
-#pragma HLS interface register port=bx_o
-#pragma HLS array_partition variable=projout_barrel_ps complete dim=1
-#pragma HLS array_partition variable=projout_barrel_2s complete dim=1
-#pragma HLS array_partition variable=projout_disk complete dim=1
-
-  static const ap_int<18> LUT_drinv[] = {
-#include "../emData/TC/tables/TC_L3L4_drinv.tab"
-  };
-  static const ap_int<18> LUT_invt[] = {
-#include "../emData/TC/tables/TC_L3L4_invt.tab"
-  };
-
-TC_L3L4A: TrackletCalculator(
-    TF::L3L4,
-    TC::A, 
-    12,
-    LUT_drinv,
-    LUT_invt,
-    bx,
-    innerStubs,
-    outerStubs,
-    stubPairs,
-    bx_o,
-    trackletParameters,
-    projout_barrel_ps,
-    projout_barrel_2s,
-    projout_disk
-  );
-}
-
-void TrackletCalculator_L3L4B(
-    const BXType bx,
     const AllStubMemory<InnerRegion<TF::L3L4>()> innerStubs[2],
     const AllStubMemory<OuterRegion<TF::L3L4>()> outerStubs[2],
-    const StubPairMemory stubPairs[12],
+    const StubPairMemory stubPairs[23],
     BXType& bx_o,
     TrackletParameterMemory * trackletParameters,
     TrackletProjectionMemory<BARRELPS> projout_barrel_ps[TC::N_PROJOUT_BARRELPS],
@@ -854,69 +795,10 @@ void TrackletCalculator_L3L4B(
 #include "../emData/TC/tables/TC_L3L4_invt.tab"
   };
 
-TC_L3L4B: TrackletCalculator(
+TC_L3L4A: TrackletCalculator(
     TF::L3L4,
-    TC::B, 
-    12,
-    LUT_drinv,
-    LUT_invt,
-    bx,
-    innerStubs,
-    outerStubs,
-    stubPairs,
-    bx_o,
-    trackletParameters,
-    projout_barrel_ps,
-    projout_barrel_2s,
-    projout_disk
-  );
-}
-
-void TrackletCalculator_L3L4C(
-    const BXType bx,
-    const AllStubMemory<InnerRegion<TF::L3L4>()> innerStubs[1],
-    const AllStubMemory<OuterRegion<TF::L3L4>()> outerStubs[1],
-    const StubPairMemory stubPairs[12],
-    BXType& bx_o,
-    TrackletParameterMemory * trackletParameters,
-    TrackletProjectionMemory<BARRELPS> projout_barrel_ps[TC::N_PROJOUT_BARRELPS],
-    TrackletProjectionMemory<BARREL2S> projout_barrel_2s[TC::N_PROJOUT_BARREL2S],
-    TrackletProjectionMemory<DISK> projout_disk[TC::N_PROJOUT_DISK]
-) {
-#pragma HLS inline recursive
-#pragma HLS array_partition variable=innerStubs complete dim=1
-#pragma HLS array_partition variable=outerStubs complete dim=1
-#pragma HLS array_partition variable=stubPairs complete dim=1
-#pragma HLS resource variable=innerStubs.get_mem() latency=2
-#pragma HLS resource variable=outerStubs.get_mem() latency=2
-#pragma HLS resource variable=stubPairs[0].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[1].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[2].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[3].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[4].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[5].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[6].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[7].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[8].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[9].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[10].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[11].get_mem() latency=2
-#pragma HLS interface register port=bx_o
-#pragma HLS array_partition variable=projout_barrel_ps complete dim=1
-#pragma HLS array_partition variable=projout_barrel_2s complete dim=1
-#pragma HLS array_partition variable=projout_disk complete dim=1
-
-  static const ap_int<18> LUT_drinv[] = {
-#include "../emData/TC/tables/TC_L3L4_drinv.tab"
-  };
-  static const ap_int<18> LUT_invt[] = {
-#include "../emData/TC/tables/TC_L3L4_invt.tab"
-  };
-
-TC_L3L4C: TrackletCalculator(
-    TF::L3L4,
-    TC::C, 
-    12,
+    TC::A, 
+    23,
     LUT_drinv,
     LUT_invt,
     bx,
@@ -935,7 +817,7 @@ void TrackletCalculator_L3L4D(
     const BXType bx,
     const AllStubMemory<InnerRegion<TF::L3L4>()> innerStubs[2],
     const AllStubMemory<OuterRegion<TF::L3L4>()> outerStubs[2],
-    const StubPairMemory stubPairs[12],
+    const StubPairMemory stubPairs[23],
     BXType& bx_o,
     TrackletParameterMemory * trackletParameters,
     TrackletProjectionMemory<BARRELPS> projout_barrel_ps[TC::N_PROJOUT_BARRELPS],
@@ -988,241 +870,7 @@ void TrackletCalculator_L3L4D(
 TC_L3L4D: TrackletCalculator(
     TF::L3L4,
     TC::D, 
-    12,
-    LUT_drinv,
-    LUT_invt,
-    bx,
-    innerStubs,
-    outerStubs,
-    stubPairs,
-    bx_o,
-    trackletParameters,
-    projout_barrel_ps,
-    projout_barrel_2s,
-    projout_disk
-  );
-}
-
-void TrackletCalculator_L3L4E(
-    const BXType bx,
-    const AllStubMemory<InnerRegion<TF::L3L4>()> innerStubs[1],
-    const AllStubMemory<OuterRegion<TF::L3L4>()> outerStubs[1],
-    const StubPairMemory stubPairs[11],
-    BXType& bx_o,
-    TrackletParameterMemory * trackletParameters,
-    TrackletProjectionMemory<BARRELPS> projout_barrel_ps[TC::N_PROJOUT_BARRELPS],
-    TrackletProjectionMemory<BARREL2S> projout_barrel_2s[TC::N_PROJOUT_BARREL2S],
-    TrackletProjectionMemory<DISK> projout_disk[TC::N_PROJOUT_DISK]
-) {
-#pragma HLS inline recursive
-#pragma HLS array_partition variable=innerStubs complete dim=1
-#pragma HLS array_partition variable=outerStubs complete dim=1
-#pragma HLS array_partition variable=stubPairs complete dim=1
-#pragma HLS resource variable=innerStubs.get_mem() latency=2
-#pragma HLS resource variable=outerStubs.get_mem() latency=2
-#pragma HLS resource variable=stubPairs[0].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[1].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[2].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[3].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[4].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[5].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[6].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[7].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[8].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[9].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[10].get_mem() latency=2
-#pragma HLS interface register port=bx_o
-#pragma HLS array_partition variable=projout_barrel_ps complete dim=1
-#pragma HLS array_partition variable=projout_barrel_2s complete dim=1
-#pragma HLS array_partition variable=projout_disk complete dim=1
-
-  static const ap_int<18> LUT_drinv[] = {
-#include "../emData/TC/tables/TC_L3L4_drinv.tab"
-  };
-  static const ap_int<18> LUT_invt[] = {
-#include "../emData/TC/tables/TC_L3L4_invt.tab"
-  };
-
-TC_L3L4E: TrackletCalculator(
-    TF::L3L4,
-    TC::E, 
-    11,
-    LUT_drinv,
-    LUT_invt,
-    bx,
-    innerStubs,
-    outerStubs,
-    stubPairs,
-    bx_o,
-    trackletParameters,
-    projout_barrel_ps,
-    projout_barrel_2s,
-    projout_disk
-  );
-}
-
-void TrackletCalculator_L3L4F(
-    const BXType bx,
-    const AllStubMemory<InnerRegion<TF::L3L4>()> innerStubs[1],
-    const AllStubMemory<OuterRegion<TF::L3L4>()> outerStubs[2],
-    const StubPairMemory stubPairs[11],
-    BXType& bx_o,
-    TrackletParameterMemory * trackletParameters,
-    TrackletProjectionMemory<BARRELPS> projout_barrel_ps[TC::N_PROJOUT_BARRELPS],
-    TrackletProjectionMemory<BARREL2S> projout_barrel_2s[TC::N_PROJOUT_BARREL2S],
-    TrackletProjectionMemory<DISK> projout_disk[TC::N_PROJOUT_DISK]
-) {
-#pragma HLS inline recursive
-#pragma HLS array_partition variable=innerStubs complete dim=1
-#pragma HLS array_partition variable=outerStubs complete dim=1
-#pragma HLS array_partition variable=stubPairs complete dim=1
-#pragma HLS resource variable=innerStubs.get_mem() latency=2
-#pragma HLS resource variable=outerStubs[0].get_mem() latency=2
-#pragma HLS resource variable=outerStubs[1].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[0].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[1].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[2].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[3].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[4].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[5].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[6].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[7].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[8].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[9].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[10].get_mem() latency=2
-#pragma HLS interface register port=bx_o
-#pragma HLS array_partition variable=projout_barrel_ps complete dim=1
-#pragma HLS array_partition variable=projout_barrel_2s complete dim=1
-#pragma HLS array_partition variable=projout_disk complete dim=1
-
-  static const ap_int<18> LUT_drinv[] = {
-#include "../emData/TC/tables/TC_L3L4_drinv.tab"
-  };
-  static const ap_int<18> LUT_invt[] = {
-#include "../emData/TC/tables/TC_L3L4_invt.tab"
-  };
-
-TC_L3L4F: TrackletCalculator(
-    TF::L3L4,
-    TC::F, 
-    11,
-    LUT_drinv,
-    LUT_invt,
-    bx,
-    innerStubs,
-    outerStubs,
-    stubPairs,
-    bx_o,
-    trackletParameters,
-    projout_barrel_ps,
-    projout_barrel_2s,
-    projout_disk
-  );
-}
-
-void TrackletCalculator_L3L4G(
-    const BXType bx,
-    const AllStubMemory<InnerRegion<TF::L3L4>()> innerStubs[1],
-    const AllStubMemory<OuterRegion<TF::L3L4>()> outerStubs[2],
-    const StubPairMemory stubPairs[11],
-    BXType& bx_o,
-    TrackletParameterMemory * trackletParameters,
-    TrackletProjectionMemory<BARRELPS> projout_barrel_ps[TC::N_PROJOUT_BARRELPS],
-    TrackletProjectionMemory<BARREL2S> projout_barrel_2s[TC::N_PROJOUT_BARREL2S],
-    TrackletProjectionMemory<DISK> projout_disk[TC::N_PROJOUT_DISK]
-) {
-#pragma HLS inline recursive
-#pragma HLS array_partition variable=innerStubs complete dim=1
-#pragma HLS array_partition variable=outerStubs complete dim=1
-#pragma HLS array_partition variable=stubPairs complete dim=1
-#pragma HLS resource variable=innerStubs.get_mem() latency=2
-#pragma HLS resource variable=outerStubs[0].get_mem() latency=2
-#pragma HLS resource variable=outerStubs[1].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[0].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[1].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[2].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[3].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[4].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[5].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[6].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[7].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[8].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[9].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[10].get_mem() latency=2
-#pragma HLS interface register port=bx_o
-#pragma HLS array_partition variable=projout_barrel_ps complete dim=1
-#pragma HLS array_partition variable=projout_barrel_2s complete dim=1
-#pragma HLS array_partition variable=projout_disk complete dim=1
-
-  static const ap_int<18> LUT_drinv[] = {
-#include "../emData/TC/tables/TC_L3L4_drinv.tab"
-  };
-  static const ap_int<18> LUT_invt[] = {
-#include "../emData/TC/tables/TC_L3L4_invt.tab"
-  };
-
-TC_L3L4G: TrackletCalculator(
-    TF::L3L4,
-    TC::G, 
-    11,
-    LUT_drinv,
-    LUT_invt,
-    bx,
-    innerStubs,
-    outerStubs,
-    stubPairs,
-    bx_o,
-    trackletParameters,
-    projout_barrel_ps,
-    projout_barrel_2s,
-    projout_disk
-  );
-}
-
-void TrackletCalculator_L3L4H(
-    const BXType bx,
-    const AllStubMemory<InnerRegion<TF::L3L4>()> innerStubs[1],
-    const AllStubMemory<OuterRegion<TF::L3L4>()> outerStubs[1],
-    const StubPairMemory stubPairs[11],
-    BXType& bx_o,
-    TrackletParameterMemory * trackletParameters,
-    TrackletProjectionMemory<BARRELPS> projout_barrel_ps[TC::N_PROJOUT_BARRELPS],
-    TrackletProjectionMemory<BARREL2S> projout_barrel_2s[TC::N_PROJOUT_BARREL2S],
-    TrackletProjectionMemory<DISK> projout_disk[TC::N_PROJOUT_DISK]
-) {
-#pragma HLS inline recursive
-#pragma HLS array_partition variable=innerStubs complete dim=1
-#pragma HLS array_partition variable=outerStubs complete dim=1
-#pragma HLS array_partition variable=stubPairs complete dim=1
-#pragma HLS resource variable=innerStubs.get_mem() latency=2
-#pragma HLS resource variable=outerStubs.get_mem() latency=2
-#pragma HLS resource variable=stubPairs[0].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[1].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[2].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[3].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[4].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[5].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[6].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[7].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[8].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[9].get_mem() latency=2
-#pragma HLS resource variable=stubPairs[10].get_mem() latency=2
-#pragma HLS interface register port=bx_o
-#pragma HLS array_partition variable=projout_barrel_ps complete dim=1
-#pragma HLS array_partition variable=projout_barrel_2s complete dim=1
-#pragma HLS array_partition variable=projout_disk complete dim=1
-
-  static const ap_int<18> LUT_drinv[] = {
-#include "../emData/TC/tables/TC_L3L4_drinv.tab"
-  };
-  static const ap_int<18> LUT_invt[] = {
-#include "../emData/TC/tables/TC_L3L4_invt.tab"
-  };
-
-TC_L3L4H: TrackletCalculator(
-    TF::L3L4,
-    TC::H, 
-    11,
+    23,
     LUT_drinv,
     LUT_invt,
     bx,
